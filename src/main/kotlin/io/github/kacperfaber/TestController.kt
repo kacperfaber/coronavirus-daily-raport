@@ -12,8 +12,12 @@ class TestController {
     @Autowired
     lateinit var apiService: ApiService
 
-    @GetMapping("/")
+    @GetMapping("get")
     fun get(): ResponseEntity<Report> {
         return ResponseEntity.ok(apiService.getReport())
+    }
+
+    init {
+        println("initialize " + javaClass.simpleName)
     }
 }
