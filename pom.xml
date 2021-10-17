@@ -82,9 +82,9 @@
             <version>2.5.2</version>
         </dependency>
         <dependency>
-            <groupId>khttp</groupId>
-            <artifactId>khttp</artifactId>
-            <version>0.1.0</version>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+            <version>4.9.1</version>
         </dependency>
         <dependency>
             <groupId>com.google.code.gson</groupId>
