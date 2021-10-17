@@ -1,4 +1,4 @@
-package io.github.kacperfaber.raports
+package io.github.kacperfaber.reports
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service

@@ -1,7 +1,7 @@
 package io.github.kacperfaber
 
-import io.github.kacperfaber.raports.ApiService
-import io.github.kacperfaber.raports.Report
+import io.github.kacperfaber.reports.ApiService
+import io.github.kacperfaber.reports.Report
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping

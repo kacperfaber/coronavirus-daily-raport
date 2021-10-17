@@ -1,4 +1,4 @@
-package io.github.kacperfaber.raports
+package io.github.kacperfaber.reports
 
 import okhttp3.OkHttpClient
 import okhttp3.Request

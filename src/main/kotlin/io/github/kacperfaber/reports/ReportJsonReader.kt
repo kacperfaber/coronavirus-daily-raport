@@ -1,4 +1,4 @@
-package io.github.kacperfaber.raports
+package io.github.kacperfaber.reports
 
 import com.google.gson.Gson
 import org.springframework.stereotype.Component

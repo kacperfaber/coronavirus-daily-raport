@@ -1,4 +1,4 @@
-package io.github.kacperfaber.raports
+package io.github.kacperfaber.reports
 
 class Report {
     var reportDate: String? = null
