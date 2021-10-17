@@ -1,6 +1,6 @@
 package io.github.kacperfaber.raports
 
 class TodayReport {
-    lateinit var infections: InfectionsReport
-    lateinit var tests: TestsReport
+    var infections: InfectionsReport? = null
+    var tests: TestsReport? = null
 }

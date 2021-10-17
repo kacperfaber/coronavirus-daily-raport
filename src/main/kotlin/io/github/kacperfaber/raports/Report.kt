@@ -1,6 +1,6 @@
 package io.github.kacperfaber.raports
 
 class Report {
-    lateinit var reportDate: String
-    lateinit var today: TodayReport
+    var reportDate: String? = null
+    var today: TodayReport? = null
 }

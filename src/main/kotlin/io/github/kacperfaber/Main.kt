@@ -7,5 +7,5 @@ fun main(args : Array<String>) {
     runApplication<Main>(*args)
 }
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = ["io.github.kacperfaber.raports"])
 open class Main
