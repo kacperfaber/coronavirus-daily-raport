@@ -25,4 +25,14 @@ class ApiService {
         val content = httpService.getContent("https://koronawirus-api.herokuapp.com/api/covid-vaccinations-tests/from/${dateWriter.writeDate(from)}/to/${dateWriter.writeDate(to)}")
         return reportsJsonReader.read(content)
     }
+
+    fun getReport(date: LocalDateTime): Report? {
+        val response = httpService.get("https://koronawirus-api.herokuapp.com/api/covid-vaccinations-tests/from/${dateWriter.writeDate(date)}/to/${dateWriter.writeDate(date.plusDays(1))}")
+        if (response.isSuccessful) {
+            val content = response.body!!.string()
+            val reports = reportsJsonReader.read(content)
+            return reports[0]
+        }
+        return null
+    }
 }
