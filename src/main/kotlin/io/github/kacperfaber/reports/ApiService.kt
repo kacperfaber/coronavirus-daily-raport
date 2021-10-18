@@ -31,7 +31,7 @@ class ApiService {
         if (response.isSuccessful) {
             val content = response.body!!.string()
             val reports = reportsJsonReader.read(content)
-            return reports[0]
+            return reports.getOrElse(0) { null }
         }
         return null
     }
