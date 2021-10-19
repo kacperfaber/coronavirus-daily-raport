@@ -2,7 +2,7 @@ package io.github.kacperfaber.api;
 
 import java.sql.Timestamp;
 
-public class EmailAddress {
+public class Subscription {
     private int id;
     private String email;
     private String confirmationCode;
@@ -54,7 +54,7 @@ public class EmailAddress {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        EmailAddress that = (EmailAddress) o;
+        Subscription that = (Subscription) o;
 
         if (id != that.id) return false;
         if (email != null ? !email.equals(that.email) : that.email != null) return false;
