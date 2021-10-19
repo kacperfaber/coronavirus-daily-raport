@@ -16,4 +16,13 @@ class ApiController(var service: SubscriptionService) {
         }
         return ResponseEntity.noContent().build()
     }
+
+    @PostMapping("subscribe/{email}/code={code}")
+    fun confirm(@PathVariable("email") email: String, @PathVariable("code") code: String): ResponseEntity<Any> {
+        val res = service.confirm(email, code)
+        if (res != ConfirmResult.Ok) {
+            return ResponseEntity.badRequest().body(res.toString())
+        }
+        return ResponseEntity.noContent().build()
+    }
 }
