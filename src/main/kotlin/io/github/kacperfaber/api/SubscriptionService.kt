@@ -17,4 +17,14 @@ class SubscriptionService(var repo: SubscriptionRepository, var codeGenerator: C
         }
         return SubscribeResult.AlreadyExist
     }
+
+    fun confirm(email: String, code: String): ConfirmResult {
+        val subscription = repo.getNotConfirmedByEmail(email)
+        if (subscription!!.confirmationCode!! == code) {
+            subscription.confirmedAt = Timestamp.valueOf(LocalDateTime.now())
+            repo.saveOrUpdate(subscription)
+            return ConfirmResult.Ok
+        }
+        return ConfirmResult.NotFound
+    }
 }
