@@ -5,12 +5,13 @@ import java.sql.Timestamp
 import java.time.LocalDateTime
 
 @Component
-class SubscriptionService(var repo: SubscriptionRepository) {
+class SubscriptionService(var repo: SubscriptionRepository, var codeGenerator: CodeGenerator) {
     fun subscribe(email: String): SubscribeResult {
         if (repo.getByEmail(email) == null) {
             val s = Subscription()
             s.email = email
             s.createdAt = Timestamp.valueOf(LocalDateTime.now())
+            s.confirmationCode = codeGenerator.generate()
             repo.save(s)
             return SubscribeResult.Ok
         }

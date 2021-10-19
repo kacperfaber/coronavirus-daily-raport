@@ -8,6 +8,6 @@ fun main(args : Array<String>) {
     runApplication<Main>(*args)
 }
 
-@SpringBootApplication(scanBasePackages = ["io.github.kacperfaber", "io.github.kacperfaber.reports"])
+@SpringBootApplication(scanBasePackages = ["io.github.kacperfaber", "io.github.kacperfaber.reports", "io.github.kacperfaber.api"])
 @EnableScheduling
 open class Main
