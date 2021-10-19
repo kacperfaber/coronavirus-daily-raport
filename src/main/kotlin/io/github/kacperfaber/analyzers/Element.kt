@@ -1,3 +1,5 @@
 package io.github.kacperfaber.analyzers
 
-open class Element
+abstract class Element {
+    abstract fun defaultWriter(): Class<out ElementWriter<out Element>>
+}

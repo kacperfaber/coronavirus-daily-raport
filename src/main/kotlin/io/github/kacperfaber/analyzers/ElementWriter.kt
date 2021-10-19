@@ -1,5 +1,5 @@
 package io.github.kacperfaber.analyzers
 
-interface ElementWriter {
-    fun write(): String
+interface ElementWriter<T> where T : Element {
+    fun write(element: T): String
 }
