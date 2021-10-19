@@ -10,7 +10,27 @@ class SubscriptionRepository(var factory: SessionFactory) {
         sess.beginTransaction()
         val map = HashMap<Any, Any>()
         map["id"] = id
-        val resultList = sess.createQuery("FROM Subscription S WHERE S.id = :id", Subscription::class.java).setProperties(map).resultList
+        val resultList =
+            sess.createQuery("FROM Subscription S WHERE S.id = :id", Subscription::class.java).setProperties(map).resultList
+        sess.close()
+        return resultList.getOrNull(0)
+    }
+
+    fun save(s: Subscription): Int{
+        val sess = factory.openSession()
+        sess.beginTransaction()
+        val id = sess.save(s) as Int
+        sess.close()
+        return id
+    }
+
+    fun getByEmail(email: String): Subscription? {
+        val sess = factory.openSession()
+        sess.beginTransaction()
+        val map = HashMap<Any, Any>()
+        map["email"] = email
+        val resultList =
+            sess.createQuery("FROM Subscription S WHERE S.email = :email", Subscription::class.java).setProperties(map).resultList
         sess.close()
         return resultList.getOrNull(0)
     }
