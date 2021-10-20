@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<span th:text="'New Infections: ' + ''${model.newCases}'"/>
+<br>
+<span th:text="'New Deaths:' + ''${model.newDeaths}'"/>
+<br>
+<span th:text="'Tests: ' + ${model.positiveTests} + ' / ' + ${model.totalTests} + '[' + ${model.positiveTestsPercentage} + '%]'"/>
+</body>
+</html>
