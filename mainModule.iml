@@ -135,5 +135,13 @@
     <orderEntry type="library" name="Maven: org.attoparser:attoparser:2.0.5.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.unbescape:unbescape:1.1.6.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.25" level="project" />
+    <orderEntry type="library" name="Maven: org.simplejavamail:simple-java-mail:6.6.1" level="project" />
+    <orderEntry type="library" name="Maven: org.simplejavamail:core-module:6.6.1" level="project" />
+    <orderEntry type="library" name="Maven: com.sun.mail:jakarta.mail:1.6.5" level="project" />
+    <orderEntry type="library" name="Maven: com.sun.activation:jakarta.activation:1.2.1" level="project" />
+    <orderEntry type="library" name="Maven: jakarta.xml.bind:jakarta.xml.bind-api:2.3.2" level="project" />
+    <orderEntry type="library" name="Maven: jakarta.activation:jakarta.activation-api:1.2.1" level="project" />
+    <orderEntry type="library" name="Maven: com.github.bbottema:emailaddress-rfc2822:2.2.0" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: com.github.bbottema:jetbrains-runtime-annotations:1.0.0" level="project" />
   </component>
 </module>
