@@ -52,4 +52,12 @@ class SubscriptionRepository(var factory: SessionFactory) {
         sess.update(s)
         sess.close()
     }
+
+    fun getActiveEmails(): List<String> {
+        val sess = factory.openSession()
+        sess.beginTransaction()
+        val r = sess.createQuery("FROM Subscription S WHERE S.confirmedAt IS NOT NULL", Subscription::class.java).resultList
+        sess.close()
+        return r.map { x -> x.email }
+    }
 }

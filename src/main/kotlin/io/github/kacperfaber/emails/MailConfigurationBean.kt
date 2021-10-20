@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration
 
 @Configuration
 open class MailConfigurationBean {
-    @Value("mail.from")
+    @Value("\${mail.from}")
     lateinit var from: String
 
     @Bean
