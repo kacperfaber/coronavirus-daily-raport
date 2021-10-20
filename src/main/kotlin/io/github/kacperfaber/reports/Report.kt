@@ -1,8 +1,8 @@
 package io.github.kacperfaber.reports
 
-import java.time.LocalDateTime
+import java.time.LocalDate
 
 class Report {
-    var reportDate: LocalDateTime? = null
+    var reportDate: LocalDate? = null
     var today: TodayReport? = null
 }

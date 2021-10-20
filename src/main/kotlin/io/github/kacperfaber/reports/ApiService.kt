@@ -1,13 +1,17 @@
 package io.github.kacperfaber.reports
 
 import org.springframework.stereotype.Service
+import java.time.LocalDate
 import java.time.LocalDateTime
 
 @Service
 class ApiService(val reportJsonReader: JsonReader<Report>, var httpService: HttpService, var dateWriter: IDateTimeWriter, var reportsJsonReader: JsonReader<Array<Report>>) {
-    fun getReport(): Report {
-        val content = httpService.getContent("https://koronawirus-api.herokuapp.com/api/covid-vaccinations-tests/daily")
-        return reportJsonReader.read(content)
+    fun getReport(): Report? {
+        val response = httpService.get("https://koronawirus-api.herokuapp.com/api/covid-vaccinations-tests/daily")
+        if (response.isSuccessful) {
+            return reportJsonReader.read(response.body!!.string())
+        }
+        return null
     }
 
     fun getReports(from: LocalDateTime, to: LocalDateTime): Array<Report> {
@@ -22,12 +26,12 @@ class ApiService(val reportJsonReader: JsonReader<Report>, var httpService: Http
         return reportsJsonReader.read(content)
     }
 
-    fun getReport(date: LocalDateTime): Report? {
+    fun getReport(date: LocalDate): Report? {
         val r = httpService.get("https://koronawirus-api.herokuapp.com/api/covid19/from/${dateWriter.writeDate(date)}/to/${dateWriter.writeDate(date.plusDays(1))}")
         if (r.isSuccessful) {
             val content = r.body!!.string()
             val reports = reportsJsonReader.read(content)
-            return reports.getOrElse(0) { null }
+            return reports.find { x -> x.reportDate == date}
         }
         return null
     }
