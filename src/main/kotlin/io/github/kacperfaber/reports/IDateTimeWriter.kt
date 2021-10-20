@@ -1,7 +1,7 @@
 package io.github.kacperfaber.reports
 
-import java.time.LocalDateTime
+import java.time.LocalDate
 
 interface IDateTimeWriter {
-    fun writeDate(l: LocalDateTime): String
+    fun writeDate(l: LocalDate): String
 }
