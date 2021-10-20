@@ -14,7 +14,7 @@ class ApiService(val reportJsonReader: JsonReader<Report>, var httpService: Http
         return null
     }
 
-    fun getReports(from: LocalDateTime, to: LocalDateTime): Array<Report> {
+    fun getReports(from: LocalDate, to: LocalDate): Array<Report> {
         val content = httpService.getContent(
             "https://koronawirus-api.herokuapp.com/api/covid19/from/${dateWriter.writeDate(from)}/to/${dateWriter.writeDate(to)}"
         )
@@ -22,7 +22,7 @@ class ApiService(val reportJsonReader: JsonReader<Report>, var httpService: Http
     }
 
     fun getAllReports(): Array<Report> {
-        val content = httpService.getContent("https://koronawirus-api.herokuapp.com/api/covid19/from/2020-03-01/to/${dateWriter.writeDate(LocalDateTime.now())}")
+        val content = httpService.getContent("https://koronawirus-api.herokuapp.com/api/covid19/from/2020-03-01/to/${dateWriter.writeDate(LocalDate.now())}")
         return reportsJsonReader.read(content)
     }
 
