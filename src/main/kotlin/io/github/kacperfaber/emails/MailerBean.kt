@@ -8,11 +8,11 @@ import org.springframework.context.annotation.Configuration
 @Configuration
 open class MailerBean {
     @Bean
-    open fun mailer(): Mailer {
+    open fun mailer(cfg: SmtpConfiguration): Mailer {
         return MailerBuilder
-            .withSMTPServer("smtp.gmail.com", 587)
-            .withSMTPServerUsername("noconkrystian484@gmail.com")
-            .withSMTPServerPassword("HelloWorld1")
+            .withSMTPServer(cfg.host, cfg.port)
+            .withSMTPServerUsername(cfg.username)
+            .withSMTPServerPassword(cfg.password)
             .buildMailer()
     }
 }
