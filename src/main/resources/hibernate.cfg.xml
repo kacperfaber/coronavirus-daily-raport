@@ -13,5 +13,6 @@
         <property name="hibernate.hbm2ddl.auto">update</property>
         <property name="hibernate.current_session_context_class">thread</property>
         <mapping resource="Subscription.hbm.xml"/>
+        <mapping resource="HistoryLog.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>
