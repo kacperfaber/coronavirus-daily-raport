@@ -1,10 +1,7 @@
 package io.github.kacperfaber.api
 
 import org.springframework.http.ResponseEntity
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.PutMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 
 @RestController
 class ApiController(var service: SubscriptionService) {
@@ -24,5 +21,10 @@ class ApiController(var service: SubscriptionService) {
             return ResponseEntity.badRequest().body(res.toString())
         }
         return ResponseEntity.noContent().build()
+    }
+
+    @GetMapping("subscription/{email}/cancel/{cancelCode}")
+    fun cancel(@PathVariable("email") email: String, @PathVariable("cancelCode") cancelCode: String): ResponseEntity<Any>{
+        return if (service.cancel(email, cancelCode)) ResponseEntity.noContent().build() else ResponseEntity.badRequest().build()
     }
 }
