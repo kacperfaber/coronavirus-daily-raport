@@ -8,6 +8,7 @@ public class Subscription {
     private String confirmationCode;
     private Timestamp createdAt;
     private Timestamp confirmedAt;
+    private Timestamp canceledAt;
 
     public int getId() {
         return id;
@@ -49,6 +50,14 @@ public class Subscription {
         this.confirmedAt = confirmedAt;
     }
 
+    public void setCanceledAt(Timestamp canceledAt) {
+        this.canceledAt = canceledAt;
+    }
+
+    public Timestamp getCanceledAt() {
+        return this.canceledAt;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -62,6 +71,7 @@ public class Subscription {
             return false;
         if (createdAt != null ? !createdAt.equals(that.createdAt) : that.createdAt != null) return false;
         if (confirmedAt != null ? !confirmedAt.equals(that.confirmedAt) : that.confirmedAt != null) return false;
+        if (canceledAt != null ? !canceledAt.equals(that.canceledAt) : that.canceledAt != null) return false;
 
         return true;
     }
@@ -73,6 +83,7 @@ public class Subscription {
         result = 31 * result + (confirmationCode != null ? confirmationCode.hashCode() : 0);
         result = 31 * result + (createdAt != null ? createdAt.hashCode() : 0);
         result = 31 * result + (confirmedAt != null ? confirmedAt.hashCode() : 0);
+        result = 31 * result + (canceledAt != null ? canceledAt.hashCode() : 0);
         return result;
     }
 }
