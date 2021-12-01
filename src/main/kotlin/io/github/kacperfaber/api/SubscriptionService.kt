@@ -2,6 +2,7 @@ package io.github.kacperfaber.api
 
 import org.springframework.stereotype.Component
 import java.sql.Timestamp
+import java.time.LocalDate
 import java.time.LocalDateTime
 
 @Component
@@ -26,5 +27,15 @@ class SubscriptionService(var repo: SubscriptionRepository, var codeGenerator: C
             return ConfirmResult.Ok
         }
         return ConfirmResult.NotFound
+    }
+
+    fun cancel(email: String, cancelCode: String): Boolean {
+        val byEmail = repo.getByEmailAndCancelCode(email, cancelCode)
+        if (byEmail != null) {
+            byEmail.canceledAt = Timestamp.valueOf(LocalDateTime.now())
+            repo.saveOrUpdate(byEmail)
+            return true
+        }
+        return false
     }
 }
