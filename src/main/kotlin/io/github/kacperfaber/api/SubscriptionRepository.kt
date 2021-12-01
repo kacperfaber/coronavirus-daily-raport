@@ -35,6 +35,18 @@ class SubscriptionRepository(var factory: SessionFactory) {
         return resultList.getOrNull(0)
     }
 
+    fun getByEmailAndCancelCode(email: String, cancelCode: String): Subscription? {
+        val sess = factory.openSession()
+        sess.beginTransaction()
+        val map = HashMap<Any, Any>()
+        map["email"] = email
+        map["code"] = cancelCode
+        val resultList =
+            sess.createQuery("FROM Subscription S WHERE S.email = :email AND S.cancelCode = :code", Subscription::class.java).setProperties(map).resultList
+        sess.close()
+        return resultList.getOrNull(0)
+    }
+
     fun getNotConfirmedByEmail(email: String): Subscription? {
         val sess = factory.openSession()
         sess.beginTransaction()
