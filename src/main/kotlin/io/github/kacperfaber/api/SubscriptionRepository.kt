@@ -4,7 +4,7 @@ import org.hibernate.SessionFactory
 import org.springframework.stereotype.Component
 
 @Component
-class SubscriptionRepository(var factory: SessionFactory) {
+open class SubscriptionRepository(var factory: SessionFactory) {
     fun get(id: Int): Subscription? {
         val sess = factory.openSession()
         sess.beginTransaction()

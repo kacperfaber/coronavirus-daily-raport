@@ -6,7 +6,7 @@ import java.time.LocalDate
 import java.time.LocalDateTime
 
 @Component
-class SubscriptionService(var repo: SubscriptionRepository, var codeGenerator: CodeGenerator) {
+open class SubscriptionService(var repo: SubscriptionRepository, var codeGenerator: CodeGenerator) {
     fun subscribe(email: String): SubscribeResult {
         if (repo.getByEmail(email) == null) {
             val s = Subscription()
