@@ -17,7 +17,6 @@ import java.time.LocalDate
 class Worker(
     var api: ApiService,
     var repository: SubscriptionRepository,
-    var emailWriter: EmailWriter,
     var emailClient: EmailClient,
     var subjectGenerator: SubjectGenerator,
     var historyRepository: HistoryRepository,
