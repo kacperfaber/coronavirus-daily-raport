@@ -1,7 +1,7 @@
 package io.github.kacperfaber.emails
 
-import io.github.kacperfaber.reports.Report
+import io.github.kacperfaber.api.Subscription
 
 interface EmailWriter {
-    fun write(report: Report): String
+    fun write(subscription: Subscription, content: StaticEmailContent): String
 }
