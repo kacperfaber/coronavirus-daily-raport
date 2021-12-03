@@ -3,6 +3,7 @@ package io.github.kacperfaber
 import io.github.kacperfaber.api.SubscriptionRepository
 import io.github.kacperfaber.emails.EmailClient
 import io.github.kacperfaber.emails.EmailWriter
+import io.github.kacperfaber.emails.StaticEmailContentGenerator
 import io.github.kacperfaber.emails.SubjectGenerator
 import io.github.kacperfaber.history.HistoryRepository
 import io.github.kacperfaber.html.HtmlWriter
@@ -20,9 +21,8 @@ class Worker(
     var emailClient: EmailClient,
     var subjectGenerator: SubjectGenerator,
     var historyRepository: HistoryRepository,
-    var htmlWriter: HtmlWriter,
-    var thymeleafProcessor: ThymeleafProcessor,
-    var thymeleafContextGenerator: ThymeleafContextGenerator
+    var staticEmailContentGenerator: StaticEmailContentGenerator,
+    var emailWriter: EmailWriter
 ) {
     @Scheduled(fixedDelay = 1000)
     fun doWork() {
@@ -32,11 +32,10 @@ class Worker(
             if (report != null) {
                 val newInfections = report.today!!.infections!!.newInfections ?: throw NullPointerException()
                 val subject = subjectGenerator.generate(report.reportDate!!, newInfections)
-                for (email in repository.getActiveEmails()) {
-                    val thymeleafHtml = htmlWriter.write(report)
-                    val thymeleafContext = thymeleafContextGenerator.generate(report)
-                    val html = thymeleafProcessor.processToHtml(thymeleafHtml, thymeleafContext)
-                    emailClient.send(email, subject, html)
+                val staticContent = staticEmailContentGenerator.generate(report)
+                for (subscription in repository.getActiveSubscriptions()) {
+                    val html = emailWriter.write(subscription, staticContent)
+                    emailClient.send(subscription.email, subject, html)
                 }
             }
         }
