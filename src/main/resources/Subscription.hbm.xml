@@ -12,5 +12,6 @@
         <property name="confirmedAt" column="confirmed_at"/>
         <property name="email" column="email"/>
         <property name="canceledAt" column="canceled_at"/>
+        <property name="cancelCode" column="cancel_code"/>
     </class>
 </hibernate-mapping>

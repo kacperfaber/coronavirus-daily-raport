@@ -9,6 +9,7 @@ public class Subscription {
     private Timestamp createdAt;
     private Timestamp confirmedAt;
     private Timestamp canceledAt;
+    private String cancelCode;
 
     public int getId() {
         return id;
@@ -58,6 +59,14 @@ public class Subscription {
         return this.canceledAt;
     }
 
+    public String getCancelCode() {
+        return cancelCode;
+    }
+
+    public void setCancelCode(String cancelCode) {
+        this.cancelCode = cancelCode;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -72,6 +81,7 @@ public class Subscription {
         if (createdAt != null ? !createdAt.equals(that.createdAt) : that.createdAt != null) return false;
         if (confirmedAt != null ? !confirmedAt.equals(that.confirmedAt) : that.confirmedAt != null) return false;
         if (canceledAt != null ? !canceledAt.equals(that.canceledAt) : that.canceledAt != null) return false;
+        if (cancelCode != null ? !cancelCode.equals(that.cancelCode) : that.cancelCode != null) return false;
 
         return true;
     }
@@ -84,6 +94,7 @@ public class Subscription {
         result = 31 * result + (createdAt != null ? createdAt.hashCode() : 0);
         result = 31 * result + (confirmedAt != null ? confirmedAt.hashCode() : 0);
         result = 31 * result + (canceledAt != null ? canceledAt.hashCode() : 0);
+        result = 31 * result + (cancelCode != null ? cancelCode.hashCode() : 0);
         return result;
     }
 }
