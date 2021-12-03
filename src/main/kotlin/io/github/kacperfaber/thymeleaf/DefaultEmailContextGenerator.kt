@@ -9,6 +9,7 @@ class DefaultEmailContextGenerator : EmailContextGenerator {
     override fun generate(subscription: Subscription, html: String): Context {
         return Context().apply {
             setVariable("subscription", subscription)
+            setVariable("staticContent", html)
         }
     }
 }
