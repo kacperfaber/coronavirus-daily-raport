@@ -24,7 +24,7 @@ class Worker(
     var staticEmailContentGenerator: StaticEmailContentGenerator,
     var emailWriter: EmailWriter
 ) {
-    @Scheduled(fixedDelay = 1000)
+    @Scheduled(fixedDelay = 1800)
     fun doWork() {
         val today = LocalDate.now()
         if (historyRepository.getLog(today) != null) {
