@@ -1,0 +1,23 @@
+PUT /subscribe/{email}
+
+    201 - OK, BODY="Ok"
+
+    400 -> Something Wrong
+
+        BODY:
+        - 'AlreadyExists' - email is already registered in database
+
+POST /subscribe/{email}/code={code}
+
+    204 - OK, BODY=""
+
+    400 -> Something Wrong
+
+        BODY:
+        - 'NotFound' - Server didn't find - NOT CONFIRMED subscription with correct 'email' and 'code'
+
+DELETE /subscription/{email}/cancel/{cancelCode}
+
+    204 - OK, BODY=""
+
+    400 - Something Wrong, BODY=""
