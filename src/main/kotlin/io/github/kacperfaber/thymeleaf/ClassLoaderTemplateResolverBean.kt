@@ -5,9 +5,9 @@ import org.thymeleaf.templatemode.TemplateMode
 import org.thymeleaf.templateresolver.*
 
 @Configuration
-open class TemplateResolverBean {
+open class ClassLoaderTemplateResolverBean {
     @Bean
-    open fun templateResolver(): ITemplateResolver {
+    open fun classLoaderTemplateResolver(): ClassLoaderTemplateResolver {
         return ClassLoaderTemplateResolver().apply {
             prefix = "th-templates/"
             suffix = ".html"
