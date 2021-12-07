@@ -10,6 +10,6 @@ import org.springframework.context.annotation.Profile
 open class DeveloperSessionFactoryBean {
     @Bean
     open fun sessionFactory(): SessionFactory {
-        return org.hibernate.cfg.Configuration().configure("dev.dev.hibernate.cfg.xml").buildSessionFactory()
+        return org.hibernate.cfg.Configuration().configure("dev.hibernate.cfg.xml").buildSessionFactory()
     }
 }
