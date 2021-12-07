@@ -1,6 +1,6 @@
 package io.github.kacperfaber.html
 
-class ThymeleafFragment(var fragmentDoc: String, var fragment: String, var params: HashMap<String, Any>) : EmptyHtmlElement() {
+open class ThymeleafFragment(var fragmentDoc: String, var fragment: String, var params: HashMap<String, Any>) : EmptyHtmlElement() {
     override fun render(): String = "<div th:insert=\"$fragmentDoc :: ${renderFragmentInvocation()}\"></div>"
 
     fun renderFragmentInvocation() = "${fragment}(${renderParameters()})"
