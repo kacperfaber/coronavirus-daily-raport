@@ -9,5 +9,10 @@
     <h3 th:text="${title}"></h3>
     <span th:text="${value}"></span>
 </div>
+
+<div th:fragment="percent-of(title, value, totalValue, percent)">
+    <h3 th:text="${title}"></h3>
+    <span th:text="${value} + ' / ' + ${totalValue} + ' [' + ${percent} + '%]'"></span>
+</div>
 </body>
 </html>
