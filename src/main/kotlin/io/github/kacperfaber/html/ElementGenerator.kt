@@ -4,5 +4,5 @@ import io.github.kacperfaber.reports.Report
 import io.github.kacperfaber.reports.TodayReport
 
 interface ElementGenerator {
-    fun generate(todayReport: Report): HtmlElement
+    fun generate(todayReport: Report): EmptyHtmlElement
 }
