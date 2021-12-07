@@ -1,13 +1,13 @@
 package io.github.kacperfaber.history;
 
-import java.sql.Date;
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class HistoryLog {
     private int id;
     private Timestamp createdAt;
-    private Date date;
+    private LocalDate date;
 
     public int getId() {
         return id;
@@ -25,11 +25,11 @@ public class HistoryLog {
         this.createdAt = createdAt;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
