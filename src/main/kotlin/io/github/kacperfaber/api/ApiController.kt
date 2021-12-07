@@ -11,7 +11,7 @@ class ApiController(var service: SubscriptionService) {
         if (res != SubscribeResult.Ok) {
             return ResponseEntity.badRequest().body(res.toString())
         }
-        return ResponseEntity.noContent().build()
+        return ResponseEntity.status(201).body(res.toString())
     }
 
     @PostMapping("subscribe/{email}/code={code}")
@@ -23,7 +23,7 @@ class ApiController(var service: SubscriptionService) {
         return ResponseEntity.noContent().build()
     }
 
-    @GetMapping("subscription/{email}/cancel/{cancelCode}")
+    @DeleteMapping("subscription/{email}/cancel/{cancelCode}")
     fun cancel(@PathVariable("email") email: String, @PathVariable("cancelCode") cancelCode: String): ResponseEntity<Any>{
         return if (service.cancel(email, cancelCode)) ResponseEntity.noContent().build() else ResponseEntity.badRequest().build()
     }
