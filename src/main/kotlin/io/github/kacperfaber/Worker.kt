@@ -27,7 +27,7 @@ class Worker(
     @Scheduled(fixedDelay = 1800)
     fun doWork() {
         val today = LocalDate.now()
-        if (historyRepository.getLog(today) != null) {
+        if (historyRepository.getLog(today) == null) {
             val report = api.getReport(today)
             if (report != null) {
                 val newInfections = report.today!!.infections!!.newInfections ?: throw NullPointerException()
