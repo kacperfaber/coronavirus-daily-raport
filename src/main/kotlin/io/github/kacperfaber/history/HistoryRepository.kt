@@ -22,4 +22,12 @@ class HistoryRepository(var factory: SessionFactory) {
     fun getLog(date: LocalDate): HistoryLog? {
         return resultListByDate(date).getOrNull(0)
     }
+
+    fun put(log: HistoryLog): HistoryLog {
+        val sess = factory.openSession()
+        sess.beginTransaction()
+        val serializable = sess.save(log)
+        sess.close()
+        return log.apply { id = serializable as Int ?: throw Exception()}
+    }
 }
