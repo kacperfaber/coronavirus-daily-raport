@@ -9,7 +9,7 @@ import java.util.*
 
 @Configuration
 @Profile("prod")
-open class ProductionSessionFactoryBean {
+open class ProductionSessionFactoryBean() {
     @Value("\${hibernate.connectionUrl}")
     lateinit var connectionUrl: String
 
@@ -45,6 +45,7 @@ open class ProductionSessionFactoryBean {
             setProperty("hibernate.dialect", dialect)
             setProperty("hibernate.show_sql", showSql)
             setProperty("hibernate.hbm2ddl.auto", hbm2dllAuto)
+//            setProperty("hibernate.connection.socketFactory", "com.mysql.jdbc.NamedPipeSocketFactory")
         }
         return org.hibernate.cfg.Configuration().addProperties(properties).buildSessionFactory()
     }
