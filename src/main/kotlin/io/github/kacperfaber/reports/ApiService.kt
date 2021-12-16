@@ -8,7 +8,8 @@ class ApiService(
     val reportJsonReader: JsonReader<Report>,
     var httpService: HttpService,
     var dateWriter: IDateTimeWriter,
-    var reportsJsonReader: JsonReader<Array<Report>>
+    var reportsJsonReader: JsonReader<Array<Report>>,
+    var vaccinationReportsDeserializer: JsonReader<Array<VaccinationReport>>
 ) {
     fun getReport(): Report? {
         val response = httpService.get("https://koronawirus-api.herokuapp.com/api/covid-vaccinations-tests/daily")
@@ -16,6 +17,13 @@ class ApiService(
             return reportJsonReader.read(response.body!!.string())
         }
         return null
+    }
+
+    fun getVaccinationReports(from: LocalDate, to: LocalDate): Array<VaccinationReport> {
+        val content = httpService.getContent(
+            "https://koronawirus-api.herokuapp.com/api/vaccinations/from/${dateWriter.writeDate(from)}/to/${dateWriter.writeDate(to)}"
+        )
+        return vaccinationReportsDeserializer.read(content)
     }
 
     fun getReports(from: LocalDate, to: LocalDate): Array<Report> {
