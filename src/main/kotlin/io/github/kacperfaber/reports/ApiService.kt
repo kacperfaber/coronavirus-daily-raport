@@ -26,6 +26,10 @@ class ApiService(
         return vaccinationReportsDeserializer.read(content)
     }
 
+    fun getAllVaccinationReports(): Array<VaccinationReport> {
+        return getVaccinationReports(LocalDate.of(2019, 1, 1), LocalDate.now())
+    }
+
     fun getReports(from: LocalDate, to: LocalDate): Array<Report> {
         val content = httpService.getContent(
             "https://koronawirus-api.herokuapp.com/api/covid-vaccinations-tests/from/${dateWriter.writeDate(from)}/to/${
