@@ -14,5 +14,10 @@
     <h3 th:text="${title}"></h3>
     <span th:text="${value} + ' / ' + ${totalValue} + ' [' + ${percent} + '%]'"></span>
 </div>
+
+<div th:fragment="diff(title, value, oldValue, daysAgo)">
+    <h3 th:text="${title}"></h3>
+    <span th:text="${value} + '(' + ${oldValue} + ' ' + ${daysAgo} + ' dni temu)'"></span>
+</div>
 </body>
 </html>
