@@ -9,7 +9,7 @@ class DefaultEmailGenerator : EmailGenerator{
     override fun generate(htmlContent: String, to: String, from: String, subject: String): Email {
         return EmailBuilder
             .startingBlank()
-            .from(to)
+            .from(from)
             .to(to)
             .withHTMLText(htmlContent)
             .withSubject(subject)
