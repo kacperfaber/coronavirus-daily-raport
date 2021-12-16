@@ -2,11 +2,12 @@ package io.github.kacperfaber.history;
 
 import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class HistoryLog {
     private int id;
-    private Timestamp createdAt;
+    private LocalDateTime createdAt;
     private LocalDate date;
 
     public int getId() {
@@ -17,11 +18,11 @@ public class HistoryLog {
         this.id = id;
     }
 
-    public Timestamp getCreatedAt() {
+    public LocalDateTime getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Timestamp createdAt) {
+    public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
 

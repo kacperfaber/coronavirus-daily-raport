@@ -14,7 +14,7 @@ class HistoryService(var repo: HistoryRepository) {
     fun createLog(date: LocalDate): HistoryLog {
         val log = HistoryLog()
         log.date = date
-        log.createdAt = Timestamp.valueOf(LocalDateTime.now())
+        log.createdAt = LocalDateTime.now()
         return repo.put(log)
     }
 }
