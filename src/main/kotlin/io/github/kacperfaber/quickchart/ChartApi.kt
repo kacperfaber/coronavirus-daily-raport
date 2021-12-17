@@ -1,12 +1,20 @@
 package io.github.kacperfaber.quickchart
 
+import io.github.kacperfaber.JsonRequestBodyGenerator
+import io.github.kacperfaber.ResponseBodyStringReader
 import io.github.kacperfaber.reports.HttpService
+import io.github.kacperfaber.reports.JsonReader
 
-class ChartApi(var payloadGenerator: ChartPayloadGenerator, var payloadSerializer: PayloadJsonWriter, var httpService: HttpService, var createUrlGenerator: CreateUrlGenerator){
-    fun createDoughnut(data: HashMap<String, Number>): ChartId{
-        val payload = payloadGenerator.generate(ChartType.Doughnut, data.map { x -> x.key}, listOf(data.map { x -> x.value }))
-        val json = payloadSerializer.write(payload)
+class ChartApi(var http: HttpService, var createUrlGenerator: CreateUrlGenerator, var jsonRequestBodyGenerator: JsonRequestBodyGenerator, var payloadJsonWriter: PayloadJsonWriter, var bodyStringReader: ResponseBodyStringReader, var createReader: JsonReader<CreateResponse>){
+    fun create(p: Payload): CreateResponse? {
         val url = createUrlGenerator.generate()
-
+        val payloadJson = payloadJsonWriter.write(p)
+        val requestBody = jsonRequestBodyGenerator.generate(payloadJson)
+        val response = http.post(url, requestBody)
+        if (response.isSuccessful && response.body != null) {
+            val body = bodyStringReader.read(response.body!!)
+            return createReader.read(body)
+        }
+        return null
     }
 }
