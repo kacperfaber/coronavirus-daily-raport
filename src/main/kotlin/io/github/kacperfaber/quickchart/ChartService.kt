@@ -1,8 +1,8 @@
 package io.github.kacperfaber.quickchart
 
-import org.springframework.stereotype.Service
+import org.springframework.stereotype.Component
 
-@Service
+@Component
 class ChartService(var api: ChartApi, var payloadGenerator: PayloadGenerator) {
     fun createDoughnut(map: HashMap<String, Any>): ChartUrl? {
         val payload = payloadGenerator.generate(ChartType.Doughnut, map.map { x -> x.key }, listOf(map.map { x -> x.value }))
