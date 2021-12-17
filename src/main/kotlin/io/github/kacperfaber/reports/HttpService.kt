@@ -36,4 +36,11 @@ class HttpService {
         val response = call.execute()
         return response
     }
+
+    fun post(url: String, body: RequestBody): Response {
+        val client = OkHttpClient()
+        val req = Request.Builder().url(url).post(body).build()
+        val call = client.newCall(req)
+        return call.execute()
+    }
 }
