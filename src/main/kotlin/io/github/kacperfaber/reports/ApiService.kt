@@ -1,5 +1,6 @@
 package io.github.kacperfaber.reports
 
+import io.github.kacperfaber.http.HttpService
 import org.springframework.stereotype.Service
 import java.time.LocalDate
 

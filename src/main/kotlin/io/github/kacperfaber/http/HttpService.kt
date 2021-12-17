@@ -1,4 +1,4 @@
-package io.github.kacperfaber.reports
+package io.github.kacperfaber.http
 
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient

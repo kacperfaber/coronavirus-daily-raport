@@ -2,7 +2,7 @@ package io.github.kacperfaber.quickchart
 
 import io.github.kacperfaber.JsonRequestBodyGenerator
 import io.github.kacperfaber.ResponseBodyStringReader
-import io.github.kacperfaber.reports.HttpService
+import io.github.kacperfaber.http.HttpService
 import io.github.kacperfaber.reports.JsonReader
 import org.springframework.stereotype.Component
 
