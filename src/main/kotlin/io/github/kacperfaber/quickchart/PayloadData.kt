@@ -1,3 +1,5 @@
 package io.github.kacperfaber.quickchart
 
-class PayloadData(var labels: List<String>, var dataSets: List<DataSet>)
+import com.google.gson.annotations.SerializedName
+
+class PayloadData(var labels: List<String>, @SerializedName("datasets") var dataSets: List<DataSet>)
