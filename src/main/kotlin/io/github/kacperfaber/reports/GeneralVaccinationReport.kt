@@ -10,5 +10,5 @@ class GeneralVaccinationReport {
     var vaccinesDeliveredToPoints: Int = 0
     var availabilityInStock: Int = 0
     var ordersInProgress: Int = 0
-    // TODO: ageTypes
+    lateinit var ageTypes: Array<VaccinationAgeType>
 }

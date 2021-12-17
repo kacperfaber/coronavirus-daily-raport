@@ -1,5 +1,5 @@
 package io.github.kacperfaber.reports
 
 class VaccinationAgeType : AgeType(){
-    var deaths = 0
+    var vaccinations = 0
 }
