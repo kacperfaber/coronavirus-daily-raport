@@ -1,3 +1,3 @@
 package io.github.kacperfaber.quickchart
 
-class ChartId(var id: String)
+class ChartUrl(var url: String)
