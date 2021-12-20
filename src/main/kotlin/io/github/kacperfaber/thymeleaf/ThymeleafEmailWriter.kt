@@ -12,7 +12,7 @@ import org.thymeleaf.context.Context
 @Component
 class ThymeleafEmailWriter(var engine: TemplateEngine, var emailContextGenerator: EmailContextGenerator) : EmailWriter {
     override fun write(subscription: Subscription, content: StaticEmailContent): String {
-        val context = emailContextGenerator.generate(subscription, content.html)
+        val context = emailContextGenerator.generate(subscription, content.html, content.generatedAt, content.reportDate)
         return engine.process("email", context)
     }
 }
