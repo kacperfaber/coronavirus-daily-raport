@@ -8,6 +8,7 @@
 <div th:utext="${staticContent}"></div>
 <br>
 <br>
+<span th:text="'Report for ' + ${#temporals.formatISO(reportDate)} + ' generated at ' + ${#temporals.formatISO(reportDate)}"></span>
 <div th:text="'Your subscription id: ' + ${subscription.id}"></div>
 </body>
 </html>
