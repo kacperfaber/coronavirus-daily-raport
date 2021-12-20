@@ -182,6 +182,11 @@
             <artifactId>jsch</artifactId>
             <version>0.1.53</version>
         </dependency>
+        <dependency>
+            <groupId>org.thymeleaf.extras</groupId>
+            <artifactId>thymeleaf-extras-java8time</artifactId>
+            <version>3.0.4.RELEASE</version>
+        </dependency>
     </dependencies>
 
 </project>
