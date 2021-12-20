@@ -10,4 +10,10 @@ class AnalyzeService {
         val monthDataList = monthData.map { x -> x.value }
         return monthDataList.first().average()
     }
+
+    fun avg(data: HashMap<LocalDate, List<Int>>, from: LocalDate, to: LocalDate): Double {
+        val selectedData = data.filter { x -> x.key in from..to }
+        val selectedDataValues = selectedData.map { x -> x.value }
+        return selectedDataValues.first().average()
+    }
 }
