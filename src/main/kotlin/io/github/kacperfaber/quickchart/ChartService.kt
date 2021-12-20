@@ -19,4 +19,14 @@ class ChartService(var api: ChartApi, var payloadGenerator: PayloadGenerator) {
         val payload = payloadGenerator.generate(chartType, labels, dataSets.map { x -> DataSet(x.toTypedArray()) })
         return api.create(payload).toNullableUrl()
     }
+
+    fun createSingleLine(dataName: String, data: HashMap<String, Array<Number>>): ChartUrl? {
+        val p = payloadGenerator.generate(ChartType.Line, data.map { x -> x.key }, data.map { x -> DataSet(x.value).apply { label = dataName } })
+        return api.create(p).toNullableUrl()
+    }
+
+    fun createLines(x: List<String>, data: HashMap<String, Array<Number>>): ChartUrl? {
+        val p = payloadGenerator.generate(ChartType.Line, x, data.map { y -> DataSet(y.value).apply { label = y.key }})
+        return api.create(p).toNullableUrl()
+    }
 }
