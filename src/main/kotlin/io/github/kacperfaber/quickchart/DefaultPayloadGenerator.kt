@@ -4,7 +4,7 @@ import org.springframework.stereotype.Component
 
 @Component
 class DefaultPayloadGenerator(var chartPayloadGenerator: ChartPayloadGenerator) : PayloadGenerator{
-    override fun generate(chartType: ChartType, labels: List<String>, dataSets: List<List<Any>>): Payload {
+    override fun generate(chartType: ChartType, labels: List<String>, dataSets: List<DataSet>): Payload {
         return Payload(chartPayloadGenerator.generate(chartType, labels, dataSets))
     }
 }
