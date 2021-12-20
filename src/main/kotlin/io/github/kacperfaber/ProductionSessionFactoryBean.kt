@@ -46,6 +46,7 @@ open class ProductionSessionFactoryBean() {
             setProperty("hibernate.show_sql", showSql)
             setProperty("hibernate.hbm2ddl.auto", hbm2dllAuto)
         }
-        return org.hibernate.cfg.Configuration().addProperties(properties).configure("prod.hibernate.cfg.xml").buildSessionFactory()
+        return org.hibernate.cfg.Configuration().addProperties(properties).configure("prod.hibernate.cfg.xml")
+            .buildSessionFactory()
     }
 }

@@ -1,6 +1,5 @@
 package io.github.kacperfaber.history;
 
-import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Objects;

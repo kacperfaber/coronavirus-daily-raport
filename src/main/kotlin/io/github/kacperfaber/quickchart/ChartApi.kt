@@ -7,7 +7,14 @@ import io.github.kacperfaber.reports.JsonReader
 import org.springframework.stereotype.Component
 
 @Component
-class ChartApi(var http: HttpService, var createUrlGenerator: CreateUrlGenerator, var jsonRequestBodyGenerator: JsonRequestBodyGenerator, var payloadJsonWriter: PayloadJsonWriter, var bodyStringReader: ResponseBodyStringReader, var createReader: JsonReader<CreateResponse>){
+class ChartApi(
+    var http: HttpService,
+    var createUrlGenerator: CreateUrlGenerator,
+    var jsonRequestBodyGenerator: JsonRequestBodyGenerator,
+    var payloadJsonWriter: PayloadJsonWriter,
+    var bodyStringReader: ResponseBodyStringReader,
+    var createReader: JsonReader<CreateResponse>
+) {
     fun create(p: Payload): CreateResponse? {
         val url = createUrlGenerator.generate()
         val payloadJson = payloadJsonWriter.write(p)

@@ -51,12 +51,12 @@ public class Subscription {
         this.confirmedAt = confirmedAt;
     }
 
-    public void setCanceledAt(Timestamp canceledAt) {
-        this.canceledAt = canceledAt;
-    }
-
     public Timestamp getCanceledAt() {
         return this.canceledAt;
+    }
+
+    public void setCanceledAt(Timestamp canceledAt) {
+        this.canceledAt = canceledAt;
     }
 
     public String getCancelCode() {

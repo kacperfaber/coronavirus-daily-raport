@@ -24,7 +24,7 @@ class ApiController(var service: SubscriptionService) {
     }
 
     @DeleteMapping("subscription/{email}/cancel/{cancelCode}")
-    fun cancel(@PathVariable("email") email: String, @PathVariable("cancelCode") cancelCode: String): ResponseEntity<Any>{
+    fun cancel(@PathVariable("email") email: String, @PathVariable("cancelCode") cancelCode: String): ResponseEntity<Any> {
         return if (service.cancel(email, cancelCode)) ResponseEntity.noContent().build() else ResponseEntity.badRequest().build()
     }
 }

@@ -5,7 +5,7 @@ import org.thymeleaf.TemplateEngine
 import org.thymeleaf.context.Context
 
 @Component
-class DefaultThymeleafProcessor(var engine: TemplateEngine) : ThymeleafProcessor{
+class DefaultThymeleafProcessor(var engine: TemplateEngine) : ThymeleafProcessor {
     override fun processToHtml(thymeleafHtml: String, ctx: Context): String {
         return engine.process(thymeleafHtml, ctx)
     }

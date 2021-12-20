@@ -5,7 +5,7 @@ import io.github.kacperfaber.round
 import org.springframework.stereotype.Component
 
 @Component
-class PositiveTestsElementGenerator : ElementGenerator{
+class PositiveTestsElementGenerator : ElementGenerator {
     override fun generate(todayReport: Report): EmptyHtmlElement {
         val positive = todayReport.today!!.tests!!.tests!!.positive
         val all = todayReport.today!!.tests!!.tests!!.all

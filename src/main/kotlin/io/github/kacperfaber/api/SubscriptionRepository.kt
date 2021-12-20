@@ -16,7 +16,7 @@ open class SubscriptionRepository(var factory: SessionFactory) {
         return resultList.getOrNull(0)
     }
 
-    fun save(s: Subscription): Int{
+    fun save(s: Subscription): Int {
         val sess = factory.openSession()
         sess.beginTransaction()
         val id = sess.save(s) as Int
@@ -42,7 +42,8 @@ open class SubscriptionRepository(var factory: SessionFactory) {
         map["email"] = email
         map["code"] = cancelCode
         val resultList =
-            sess.createQuery("FROM Subscription S WHERE S.email = :email AND S.cancelCode = :code", Subscription::class.java).setProperties(map).resultList
+            sess.createQuery("FROM Subscription S WHERE S.email = :email AND S.cancelCode = :code", Subscription::class.java)
+                .setProperties(map).resultList
         sess.close()
         return resultList.getOrNull(0)
     }
@@ -53,7 +54,8 @@ open class SubscriptionRepository(var factory: SessionFactory) {
         val map = HashMap<Any, Any>()
         map["email"] = email
         val resultList =
-            sess.createQuery("FROM Subscription S WHERE S.email = :email AND S.confirmedAt IS NULL", Subscription::class.java).setProperties(map).resultList
+            sess.createQuery("FROM Subscription S WHERE S.email = :email AND S.confirmedAt IS NULL", Subscription::class.java)
+                .setProperties(map).resultList
         sess.close()
         return resultList.getOrNull(0)
     }
@@ -68,7 +70,10 @@ open class SubscriptionRepository(var factory: SessionFactory) {
     fun getActiveEmails(): List<String> {
         val sess = factory.openSession()
         sess.beginTransaction()
-        val r = sess.createQuery("FROM Subscription S WHERE S.confirmedAt IS NOT NULL AND S.canceledAt IS NULL", Subscription::class.java).resultList
+        val r = sess.createQuery(
+            "FROM Subscription S WHERE S.confirmedAt IS NOT NULL AND S.canceledAt IS NULL",
+            Subscription::class.java
+        ).resultList
         sess.close()
         return r.map { x -> x.email }
     }
@@ -76,7 +81,10 @@ open class SubscriptionRepository(var factory: SessionFactory) {
     fun getActiveSubscriptions(): List<Subscription> {
         val sess = factory.openSession()
         sess.beginTransaction()
-        val r = sess.createQuery("FROM Subscription S WHERE S.confirmedAt IS NOT NULL AND S.canceledAt IS NULL", Subscription::class.java).resultList
+        val r = sess.createQuery(
+            "FROM Subscription S WHERE S.confirmedAt IS NOT NULL AND S.canceledAt IS NULL",
+            Subscription::class.java
+        ).resultList
         sess.close()
         return r
     }

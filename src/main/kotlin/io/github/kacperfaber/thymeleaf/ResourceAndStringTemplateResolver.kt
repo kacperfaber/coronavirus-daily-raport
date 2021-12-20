@@ -10,7 +10,10 @@ import org.thymeleaf.templateresolver.TemplateResolution
 
 @Component
 @Primary
-class ResourceAndStringTemplateResolver(var templateResolver: ClassLoaderTemplateResolver, var stringResolver: StringTemplateResolver) : ITemplateResolver {
+class ResourceAndStringTemplateResolver(
+    var templateResolver: ClassLoaderTemplateResolver,
+    var stringResolver: StringTemplateResolver
+) : ITemplateResolver {
     override fun getName(): String = javaClass.name
 
     override fun getOrder(): Int = 0
@@ -21,6 +24,11 @@ class ResourceAndStringTemplateResolver(var templateResolver: ClassLoaderTemplat
         p2: String?,
         p3: MutableMap<String, Any>?
     ): TemplateResolution {
-        return if (!p2!!.contains("<")) templateResolver.resolveTemplate(p0, p1, p2, p3) else stringResolver.resolveTemplate(p0, p1, p2, p3)
+        return if (!p2!!.contains("<")) templateResolver.resolveTemplate(p0, p1, p2, p3) else stringResolver.resolveTemplate(
+            p0,
+            p1,
+            p2,
+            p3
+        )
     }
 }

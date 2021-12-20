@@ -12,7 +12,12 @@ import java.time.LocalDate
 import java.time.LocalDateTime
 
 @Configuration
-open class GsonBean(var adapter: LocalDateTimeAdapter, var localDateAdapter: LocalDateAdapter, var ageRangeAdapter: AgeRangeAdapter, var chartTypeAdapter: ChartTypeAdapter) {
+open class GsonBean(
+    var adapter: LocalDateTimeAdapter,
+    var localDateAdapter: LocalDateAdapter,
+    var ageRangeAdapter: AgeRangeAdapter,
+    var chartTypeAdapter: ChartTypeAdapter
+) {
     @Bean
     open fun gson(): Gson {
         return GsonBuilder()

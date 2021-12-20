@@ -10,7 +10,11 @@ import org.thymeleaf.templateresolver.StringTemplateResolver
 @Configuration
 open class TemplateEngineBean {
     @Bean
-    open fun templateEngine(stringTemplateResolver: StringTemplateResolver, classLoaderTemplateResolver: ClassLoaderTemplateResolver, customTemplateResolver: ResourceAndStringTemplateResolver): TemplateEngine {
+    open fun templateEngine(
+        stringTemplateResolver: StringTemplateResolver,
+        classLoaderTemplateResolver: ClassLoaderTemplateResolver,
+        customTemplateResolver: ResourceAndStringTemplateResolver
+    ): TemplateEngine {
         val engine = TemplateEngine()
 //        engine.addTemplateResolver(stringTemplateResolver)
 //        engine.addTemplateResolver(classLoaderTemplateResolver)

@@ -8,7 +8,7 @@ import org.thymeleaf.templateresolver.StringTemplateResolver
 @Configuration
 open class StringTemplateResolverBean {
     @Bean
-    open fun stringTemplateResolver(): StringTemplateResolver{
+    open fun stringTemplateResolver(): StringTemplateResolver {
         return StringTemplateResolver().apply {
             templateMode = TemplateMode.HTML
         }

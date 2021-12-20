@@ -12,7 +12,8 @@ import java.time.LocalDateTime
 class HtmlStaticEmailContentGenerator(
     var htmlWriter: HtmlWriter,
     var thymeleafProcessor: ThymeleafProcessor,
-    var thymeleafContextGenerator: ThymeleafContextGenerator) : StaticEmailContentGenerator {
+    var thymeleafContextGenerator: ThymeleafContextGenerator
+) : StaticEmailContentGenerator {
     override fun generate(today: Report): StaticEmailContent {
         val thymeleafHtml = htmlWriter.write(today)
         val thymeleafContext = thymeleafContextGenerator.generate(today)

@@ -8,7 +8,7 @@ class ReportStorage(var reports: Array<Report>, var vaccinationReports: Array<Va
     }
 
     fun getVaccinationReport(date: LocalDate): VaccinationReport? {
-        return vaccinationReports.firstOrNull {x -> x.reportDate == date}
+        return vaccinationReports.firstOrNull { x -> x.reportDate == date }
     }
 
     fun getVaccinationReports(from: LocalDate, to: LocalDate): List<VaccinationReport> {

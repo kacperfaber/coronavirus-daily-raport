@@ -2,7 +2,6 @@ package io.github.kacperfaber.api
 
 import org.springframework.stereotype.Component
 import java.sql.Timestamp
-import java.time.LocalDate
 import java.time.LocalDateTime
 
 @Component

@@ -1,5 +1,5 @@
 package io.github.kacperfaber.reports
 
-interface JsonReader <T> {
+interface JsonReader<T> {
     fun read(str: String): T
 }

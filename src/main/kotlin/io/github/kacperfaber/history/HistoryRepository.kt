@@ -28,6 +28,6 @@ class HistoryRepository(var factory: SessionFactory) {
         sess.beginTransaction()
         val serializable = sess.save(log)
         sess.close()
-        return log.apply { id = serializable as Int ?: throw Exception()}
+        return log.apply { id = serializable as Int ?: throw Exception() }
     }
 }

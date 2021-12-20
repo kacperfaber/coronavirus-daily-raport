@@ -2,21 +2,21 @@ package io.github.kacperfaber.api.mvctests
 
 import io.github.kacperfaber.api.SubscriptionService
 import org.junit.jupiter.api.Test
-import org.junit.runner.RunWith
-import org.mockito.Mockito.*
-import org.mockito.junit.MockitoJUnitRunner
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*
+import org.mockito.Mockito.`when`
+import org.mockito.Mockito.anyString
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureWebMvc
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
 import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.test.web.servlet.MockMvc
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
 
 @WebMvcTest
 @AutoConfigureWebMvc
 class ApiController_cancel {
     @MockBean
     lateinit var service: SubscriptionService
+
     @Autowired
     lateinit var mvc: MockMvc
 

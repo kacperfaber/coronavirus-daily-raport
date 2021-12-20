@@ -1,5 +1,6 @@
 package io.github.kacperfaber
-import kotlin.math.*
+
+import kotlin.math.round
 
 fun Double.round(d: Int): Double {
     var m = 1.0

@@ -1,6 +1,9 @@
 package io.github.kacperfaber.quickchart
 
-import com.google.gson.*
+import com.google.gson.JsonElement
+import com.google.gson.JsonPrimitive
+import com.google.gson.JsonSerializationContext
+import com.google.gson.JsonSerializer
 import org.springframework.stereotype.Component
 import java.lang.reflect.Type
 
