@@ -1,3 +1,6 @@
 package io.github.kacperfaber.emails
 
-class StaticEmailContent(var html: String)
+import java.time.LocalDate
+import java.time.LocalDateTime
+
+class StaticEmailContent(var html: String, var generatedAt: LocalDateTime, var reportDate: LocalDate)

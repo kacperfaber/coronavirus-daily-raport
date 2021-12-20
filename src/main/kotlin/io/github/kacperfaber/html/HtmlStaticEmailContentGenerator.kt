@@ -6,6 +6,7 @@ import io.github.kacperfaber.emails.StaticEmailContentGenerator
 import io.github.kacperfaber.reports.Report
 import io.github.kacperfaber.thymeleaf.ThymeleafProcessor
 import org.springframework.stereotype.Component
+import java.time.LocalDateTime
 
 @Component
 class HtmlStaticEmailContentGenerator(
@@ -16,6 +17,6 @@ class HtmlStaticEmailContentGenerator(
         val thymeleafHtml = htmlWriter.write(today)
         val thymeleafContext = thymeleafContextGenerator.generate(today)
         val html = thymeleafProcessor.processToHtml(thymeleafHtml, thymeleafContext)
-        return StaticEmailContent(html)
+        return StaticEmailContent(html, LocalDateTime.now(), today.reportDate!!)
     }
 }
