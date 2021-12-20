@@ -11,7 +11,6 @@ class ChartService(var api: ChartApi, var payloadGenerator: PayloadGenerator) {
     }
 
     fun createDoughnut(labels: List<String>, dataSet: List<Number>): ChartUrl?{
-
         val payload = payloadGenerator.generate(ChartType.Doughnut, labels, dataSet.map { x -> DataSet(arrayOf(x)) })
         return api.create(payload).toNullableUrl()
     }
