@@ -1,8 +1,8 @@
 package io.github.kacperfaber
 
-import io.github.kacperfaber.reports.Report
+import io.github.kacperfaber.reports.CovidReport
 import org.thymeleaf.context.Context
 
 interface ThymeleafContextGenerator {
-    fun generate(todayReport: Report): Context
+    fun generate(todayCovidReport: CovidReport): Context
 }

@@ -1,7 +1,7 @@
 package io.github.kacperfaber.html
 
-import io.github.kacperfaber.reports.Report
+import io.github.kacperfaber.reports.CovidReport
 
 interface ElementGenerator {
-    fun generate(todayReport: Report): EmptyHtmlElement
+    fun generate(todayCovidReport: CovidReport): EmptyHtmlElement
 }

@@ -1,7 +1,7 @@
 package io.github.kacperfaber.emails
 
-import io.github.kacperfaber.reports.Report
+import io.github.kacperfaber.reports.CovidReport
 
 interface StaticEmailContentGenerator {
-    fun generate(today: Report): StaticEmailContent
+    fun generate(today: CovidReport): StaticEmailContent
 }

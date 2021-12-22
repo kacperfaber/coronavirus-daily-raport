@@ -1,12 +1,12 @@
 package io.github.kacperfaber.html
 
-import io.github.kacperfaber.reports.Report
+import io.github.kacperfaber.reports.CovidReport
 import org.springframework.stereotype.Component
 
 @Component
 class NewDeathsElementGenerator : ElementGenerator {
-    override fun generate(todayReport: Report): EmptyHtmlElement {
-        val newDeaths = todayReport.today!!.infections!!.newDeaths ?: throw NullPointerException()
+    override fun generate(todayCovidReport: CovidReport): EmptyHtmlElement {
+        val newDeaths = todayCovidReport.today!!.newDeaths
         return AddThyemelafFragment("New Deaths", newDeaths)
     }
 }

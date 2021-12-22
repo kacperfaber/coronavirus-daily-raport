@@ -6,16 +6,16 @@ import java.time.LocalDate
 
 @Service
 class ApiService(
-    val reportJsonReader: JsonReader<Report>,
+    val covidReportJsonReader: JsonReader<CovidReport>,
     var httpService: HttpService,
     var dateWriter: IDateTimeWriter,
-    var reportsJsonReader: JsonReader<Array<Report>>,
+    var reportsJsonReader: JsonReader<Array<CovidReport>>,
     var vaccinationReportsDeserializer: JsonReader<Array<VaccinationReport>>
 ) {
-    fun getReport(): Report? {
+    fun getCovidReport(): CovidReport? { // TODO: Replace with 'DailyReport' class
         val response = httpService.get("https://koronawirus-api.herokuapp.com/api/covid-vaccinations-tests/daily")
         if (response.isSuccessful) {
-            return reportJsonReader.read(response.body!!.string())
+            return covidReportJsonReader.read(response.body!!.string())
         }
         return null
     }
@@ -35,7 +35,7 @@ class ApiService(
         return getVaccinationReports(LocalDate.of(2019, 1, 1), LocalDate.now())
     }
 
-    fun getReports(from: LocalDate, to: LocalDate): Array<Report> {
+    fun getCovidReports(from: LocalDate, to: LocalDate): Array<CovidReport> {
         val content = httpService.getContent(
             "https://koronawirus-api.herokuapp.com/api/covid-vaccinations-tests/from/${dateWriter.writeDate(from)}/to/${
                 dateWriter.writeDate(
@@ -46,7 +46,7 @@ class ApiService(
         return reportsJsonReader.read(content)
     }
 
-    fun getAllReports(): Array<Report> {
+    fun getAllCovidReports(): Array<CovidReport> {
         val content = httpService.getContent(
             "https://koronawirus-api.herokuapp.com/api/covid19/from/${
                 dateWriter.writeDate(
@@ -57,7 +57,7 @@ class ApiService(
         return reportsJsonReader.read(content)
     }
 
-    fun getReport(date: LocalDate): Report? {
+    fun getCovidReport(date: LocalDate): CovidReport? {
         val r = httpService.get(
             "https://koronawirus-api.herokuapp.com/api/covid-vaccinations-tests/from/${dateWriter.writeDate(date)}/to/${
                 dateWriter.writeDate(date.plusDays(1))

@@ -1,7 +1,7 @@
 package io.github.kacperfaber.html
 
-import io.github.kacperfaber.reports.Report
+import io.github.kacperfaber.reports.CovidReport
 
 interface HtmlWriter {
-    fun write(todayReport: Report): String
+    fun write(todayCovidReport: CovidReport): String
 }

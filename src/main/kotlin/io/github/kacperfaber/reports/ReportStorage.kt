@@ -2,9 +2,9 @@ package io.github.kacperfaber.reports
 
 import java.time.LocalDate
 
-class ReportStorage(var reports: Array<Report>, var vaccinationReports: Array<VaccinationReport>) {
-    fun getReport(date: LocalDate): Report? {
-        return reports.firstOrNull { x -> x.reportDate!! == date }
+class ReportStorage(var covidReports: Array<CovidReport>, var vaccinationReports: Array<VaccinationReport>) {
+    fun getReport(date: LocalDate): CovidReport? {
+        return covidReports.firstOrNull { x -> x.reportDate!! == date }
     }
 
     fun getVaccinationReport(date: LocalDate): VaccinationReport? {

@@ -7,6 +7,6 @@ import org.springframework.context.annotation.Configuration
 open class ReportStorageBean {
     @Bean
     open fun reportStorage(api: ApiService): ReportStorage {
-        return ReportStorage(api.getAllReports(), api.getAllVaccinationReports())
+        return ReportStorage(api.getAllCovidReports(), api.getAllVaccinationReports())
     }
 }

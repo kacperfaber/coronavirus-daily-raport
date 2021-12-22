@@ -25,9 +25,9 @@ class Worker(
     fun doWork() {
         val today = LocalDate.now()
         if (historyService.getLog(today) == null) {
-            val report = api.getReport(today)
+            val report = api.getCovidReport(today)
             if (report != null) {
-                val newInfections = report.today!!.infections!!.newInfections ?: throw NullPointerException()
+                val newInfections = report.today!!.newInfections
                 val subject = subjectGenerator.generate(report.reportDate!!, newInfections)
                 val staticContent = staticEmailContentGenerator.generate(report)
                 for (subscription in repository.getActiveSubscriptions()) {
