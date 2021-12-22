@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service
 import java.time.LocalDate
 
 @Service
-class ApiService(
+open class ApiService(
     var httpService: HttpService,
     var dateWriter: IDateTimeWriter,
     var reportsJsonReader: JsonReader<Array<CovidReport>>,
