@@ -1,14 +1,15 @@
 package io.github.kacperfaber.html
 
-import io.github.kacperfaber.reports.CovidReport
+import io.github.kacperfaber.reports.DailyReport
+import io.github.kacperfaber.reports.ReportStorage
 import io.github.kacperfaber.round
 import org.springframework.stereotype.Component
 
 @Component
 class NewCasesElementGenerator : ElementGenerator {
-    override fun generate(todayCovidReport: CovidReport): EmptyHtmlElement {
-        val newInfections = todayCovidReport.today!!.newInfections ?: throw NullPointerException()
-        val totalTests = todayCovidReport.today!!.tests!!.tests!!.all // TODO: Missing tests
+    override fun generate(dailyReport: DailyReport, reportStorage: ReportStorage): EmptyHtmlElement {
+        val newInfections = dailyReport.today.infections.newInfections
+        val totalTests = dailyReport.today.tests.tests!!.all
         return PercentThymeleafFragment(
             "New Confirmed Cases",
             newInfections,

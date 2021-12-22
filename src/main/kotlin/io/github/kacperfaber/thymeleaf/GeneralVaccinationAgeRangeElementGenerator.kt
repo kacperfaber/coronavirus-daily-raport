@@ -5,15 +5,15 @@ import io.github.kacperfaber.html.EmptyHtmlElement
 import io.github.kacperfaber.quickchart.ChartService
 import io.github.kacperfaber.reports.AgeRange
 import io.github.kacperfaber.reports.CovidReport
+import io.github.kacperfaber.reports.DailyReport
 import io.github.kacperfaber.reports.ReportStorage
 import org.springframework.stereotype.Component
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
 @Component
-class GeneralVaccinationAgeRangeElementGenerator(var chartService: ChartService, var reportStorage: ReportStorage) :
-    ElementGenerator {
-    override fun generate(todayCovidReport: CovidReport): EmptyHtmlElement {
+class GeneralVaccinationAgeRangeElementGenerator(var chartService: ChartService) : ElementGenerator {
+    override fun generate(dailyReport: DailyReport, reportStorage: ReportStorage): EmptyHtmlElement {
         val yesterday = LocalDate.now().minusDays(1)
         val ageTypes = reportStorage.getVaccinationReport(yesterday)!!.general.ageTypes
         val filtered = ageTypes.filter { x -> x.ageType != AgeRange.Unknown }

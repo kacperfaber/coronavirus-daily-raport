@@ -4,6 +4,8 @@ import io.github.kacperfaber.ThymeleafContextGenerator
 import io.github.kacperfaber.emails.StaticEmailContent
 import io.github.kacperfaber.emails.StaticEmailContentGenerator
 import io.github.kacperfaber.reports.CovidReport
+import io.github.kacperfaber.reports.DailyReport
+import io.github.kacperfaber.reports.ReportStorage
 import io.github.kacperfaber.thymeleaf.ThymeleafProcessor
 import org.springframework.stereotype.Component
 import java.time.LocalDateTime
@@ -14,10 +16,10 @@ class HtmlStaticEmailContentGenerator(
     var thymeleafProcessor: ThymeleafProcessor,
     var thymeleafContextGenerator: ThymeleafContextGenerator
 ) : StaticEmailContentGenerator {
-    override fun generate(today: CovidReport): StaticEmailContent {
-        val thymeleafHtml = htmlWriter.write(today)
-        val thymeleafContext = thymeleafContextGenerator.generate(today)
+    override fun generate(dailyReport: DailyReport, reportStorage: ReportStorage): StaticEmailContent {
+        val thymeleafHtml = htmlWriter.write(dailyReport, reportStorage)
+        val thymeleafContext = thymeleafContextGenerator.generate(dailyReport)
         val html = thymeleafProcessor.processToHtml(thymeleafHtml, thymeleafContext)
-        return StaticEmailContent(html, LocalDateTime.now(), today.reportDate!!)
+        return StaticEmailContent(html, LocalDateTime.now(), dailyReport.reportDate!!)
     }
 }

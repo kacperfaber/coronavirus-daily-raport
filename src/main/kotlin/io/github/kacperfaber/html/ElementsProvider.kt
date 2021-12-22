@@ -1,7 +1,8 @@
 package io.github.kacperfaber.html
 
-import io.github.kacperfaber.reports.CovidReport
+import io.github.kacperfaber.reports.DailyReport
+import io.github.kacperfaber.reports.ReportStorage
 
 interface ElementsProvider {
-    fun provide(todayCovidReport: CovidReport): List<EmptyHtmlElement>
+    fun provide(dailyReport: DailyReport, reportStorage: ReportStorage): List<EmptyHtmlElement>
 }

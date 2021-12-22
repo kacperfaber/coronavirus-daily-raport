@@ -6,18 +6,15 @@ import java.time.LocalDate
 
 @Service
 class ApiService(
-    val covidReportJsonReader: JsonReader<CovidReport>,
     var httpService: HttpService,
     var dateWriter: IDateTimeWriter,
     var reportsJsonReader: JsonReader<Array<CovidReport>>,
-    var vaccinationReportsDeserializer: JsonReader<Array<VaccinationReport>>
+    var vaccinationReportsDeserializer: JsonReader<Array<VaccinationReport>>,
+    var dailyReportReader: JsonReader<DailyReport>
 ) {
-    fun getCovidReport(): CovidReport? { // TODO: Replace with 'DailyReport' class
-        val response = httpService.get("https://koronawirus-api.herokuapp.com/api/covid-vaccinations-tests/daily")
-        if (response.isSuccessful) {
-            return covidReportJsonReader.read(response.body!!.string())
-        }
-        return null
+    fun getDailyReport(): DailyReport {
+        val content = httpService.getContent("https://koronawirus-api.herokuapp.com/api/covid-vaccinations-tests/daily")
+        return dailyReportReader.read(content)
     }
 
     fun getVaccinationReports(from: LocalDate, to: LocalDate): Array<VaccinationReport> {
