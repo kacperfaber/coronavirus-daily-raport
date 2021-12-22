@@ -1,4 +1,4 @@
-package io.github.kacperfaber.analyzer
+package io.github.kacperfaber.grouping
 
 import java.time.LocalDate
 
