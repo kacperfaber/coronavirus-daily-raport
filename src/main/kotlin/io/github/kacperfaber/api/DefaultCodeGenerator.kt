@@ -7,7 +7,7 @@ class DefaultCodeGenerator : CodeGenerator {
     override fun generate(len: Int): String {
         val builder = StringBuilder()
         val rand = java.util.Random()
-        repeat(len) {builder.append(rand.nextInt())}
+        repeat(len) {builder.append(rand.nextInt(0, 9))}
         return builder.toString()
     }
 }

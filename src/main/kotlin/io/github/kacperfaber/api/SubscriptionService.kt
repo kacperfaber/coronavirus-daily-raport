@@ -11,7 +11,7 @@ open class SubscriptionService(var repo: SubscriptionRepository, var codeGenerat
             val s = Subscription()
             s.email = email
             s.createdAt = Timestamp.valueOf(LocalDateTime.now())
-            s.confirmationCode = codeGenerator.generate()
+            s.confirmationCode = codeGenerator.generate(5)
             repo.save(s)
             return SubscribeResult.Ok
         }
