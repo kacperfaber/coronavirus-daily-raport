@@ -1,4 +1,4 @@
-package io.github.kacperfaber.tests
+package io.github.kacperfaber.history.tests
 
 import io.github.kacperfaber.history.HistoryLog
 import io.github.kacperfaber.history.HistoryRepository
