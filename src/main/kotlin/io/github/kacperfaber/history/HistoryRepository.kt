@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component
 import java.time.LocalDate
 
 @Component
-class HistoryRepository(var factory: SessionFactory) {
+open class HistoryRepository(var factory: SessionFactory) {
     private fun resultListByDate(date: LocalDate): MutableList<HistoryLog> {
         val sess = factory.openSession()
         sess.beginTransaction()
@@ -19,7 +19,7 @@ class HistoryRepository(var factory: SessionFactory) {
         return resultListByDate(date)
     }
 
-    fun getLog(date: LocalDate): HistoryLog? {
+    open fun getLog(date: LocalDate): HistoryLog? {
         return resultListByDate(date).getOrNull(0)
     }
 
