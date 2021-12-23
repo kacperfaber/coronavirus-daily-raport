@@ -1,5 +1,5 @@
 package io.github.kacperfaber.api
 
 interface CodeGenerator {
-    fun generate(): String
+    fun generate(len: Int): String
 }

@@ -1,11 +1,13 @@
 package io.github.kacperfaber.api
 
 import org.springframework.stereotype.Component
-import kotlin.random.Random
 
 @Component
 class DefaultCodeGenerator : CodeGenerator {
-    override fun generate(): String {
-        return Random.nextInt().toString()
+    override fun generate(len: Int): String {
+        val builder = StringBuilder()
+        val rand = java.util.Random()
+        repeat(len) {builder.append(rand.nextInt())}
+        return builder.toString()
     }
 }
