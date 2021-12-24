@@ -20,7 +20,7 @@ open class SubscriptionService(var repo: SubscriptionRepository, var codeGenerat
 
     fun confirm(email: String, code: String): ConfirmResult {
         val subscription = repo.getNotConfirmedByEmail(email)
-        if (subscription!!.confirmationCode!! == code) {
+        if (subscription?.confirmationCode == code) {
             subscription.confirmedAt = Timestamp.valueOf(LocalDateTime.now())
             repo.saveOrUpdate(subscription)
             return ConfirmResult.Ok
