@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component
 
 @Component
 open class SubscriptionRepository(var factory: SessionFactory) {
-    fun get(id: Int): Subscription? {
+    open fun get(id: Int): Subscription? {
         val sess = factory.openSession()
         sess.beginTransaction()
         val map = HashMap<Any, Any>()
@@ -16,7 +16,7 @@ open class SubscriptionRepository(var factory: SessionFactory) {
         return resultList.getOrNull(0)
     }
 
-    fun save(s: Subscription): Int {
+    open fun save(s: Subscription): Int {
         val sess = factory.openSession()
         sess.beginTransaction()
         val id = sess.save(s) as Int
@@ -24,7 +24,7 @@ open class SubscriptionRepository(var factory: SessionFactory) {
         return id
     }
 
-    fun getByEmail(email: String): Subscription? {
+    open fun getByEmail(email: String): Subscription? {
         val sess = factory.openSession()
         sess.beginTransaction()
         val map = HashMap<Any, Any>()
@@ -35,7 +35,7 @@ open class SubscriptionRepository(var factory: SessionFactory) {
         return resultList.getOrNull(0)
     }
 
-    fun getByEmailAndCancelCode(email: String, cancelCode: String): Subscription? {
+    open fun getByEmailAndCancelCode(email: String, cancelCode: String): Subscription? {
         val sess = factory.openSession()
         sess.beginTransaction()
         val map = HashMap<Any, Any>()
@@ -48,7 +48,7 @@ open class SubscriptionRepository(var factory: SessionFactory) {
         return resultList.getOrNull(0)
     }
 
-    fun getNotConfirmedByEmail(email: String): Subscription? {
+    open fun getNotConfirmedByEmail(email: String): Subscription? {
         val sess = factory.openSession()
         sess.beginTransaction()
         val map = HashMap<Any, Any>()
@@ -60,14 +60,14 @@ open class SubscriptionRepository(var factory: SessionFactory) {
         return resultList.getOrNull(0)
     }
 
-    fun saveOrUpdate(s: Subscription) {
+    open fun saveOrUpdate(s: Subscription) {
         val sess = factory.openSession()
         sess.beginTransaction()
         sess.update(s)
         sess.close()
     }
 
-    fun getActiveEmails(): List<String> {
+    open fun getActiveEmails(): List<String> {
         val sess = factory.openSession()
         sess.beginTransaction()
         val r = sess.createQuery(
@@ -78,7 +78,7 @@ open class SubscriptionRepository(var factory: SessionFactory) {
         return r.map { x -> x.email }
     }
 
-    fun getActiveSubscriptions(): List<Subscription> {
+    open fun getActiveSubscriptions(): List<Subscription> {
         val sess = factory.openSession()
         sess.beginTransaction()
         val r = sess.createQuery(
