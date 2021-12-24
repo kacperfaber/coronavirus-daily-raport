@@ -1,8 +1,8 @@
 package io.github.kacperfaber.emails.tests
 
 import io.github.kacperfaber.emails.DefaultEmailGenerator
-import org.junit.Test
 import org.junit.jupiter.api.DisplayName
+import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
 import kotlin.test.assertNotNull
 
