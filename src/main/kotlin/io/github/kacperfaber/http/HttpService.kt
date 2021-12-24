@@ -8,10 +8,10 @@ import okhttp3.Response
 import org.springframework.stereotype.Service
 
 @Service
-class HttpService {
+open class HttpService {
     var client: OkHttpClient = OkHttpClient()
 
-    fun getContent(url: String): String {
+    open fun getContent(url: String): String {
         val client = OkHttpClient()
         val request = Request.Builder().url(url)
             .get()
@@ -21,12 +21,12 @@ class HttpService {
         return response.body!!.string()
     }
 
-    fun get(url: String): Response {
+    open fun get(url: String): Response {
         val request = Request.Builder().url(url).get().build()
         return client.newCall(request).execute()
     }
 
-    fun postJson(url: String, json: String): Response {
+    open fun postJson(url: String, json: String): Response {
         val requestBody = RequestBody.Companion.create("application/json".toMediaType(), json)
         val client = OkHttpClient()
         val request = Request.Builder().url(url)
@@ -37,7 +37,7 @@ class HttpService {
         return response
     }
 
-    fun post(url: String, body: RequestBody): Response {
+    open fun post(url: String, body: RequestBody): Response {
         val client = OkHttpClient()
         val req = Request.Builder().url(url).post(body).build()
         val call = client.newCall(req)
