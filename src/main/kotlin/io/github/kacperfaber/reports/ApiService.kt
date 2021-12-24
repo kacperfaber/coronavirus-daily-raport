@@ -12,12 +12,12 @@ open class ApiService(
     var vaccinationReportsDeserializer: JsonReader<Array<VaccinationReport>>,
     var dailyReportReader: JsonReader<DailyReport>
 ) {
-    fun getDailyReport(): DailyReport {
+    open fun getDailyReport(): DailyReport {
         val content = httpService.getContent("https://koronawirus-api.herokuapp.com/api/covid-vaccinations-tests/daily")
         return dailyReportReader.read(content)
     }
 
-    fun getVaccinationReports(from: LocalDate, to: LocalDate): Array<VaccinationReport> {
+    open fun getVaccinationReports(from: LocalDate, to: LocalDate): Array<VaccinationReport> {
         val content = httpService.getContent(
             "https://koronawirus-api.herokuapp.com/api/vaccinations/from/${dateWriter.writeDate(from)}/to/${
                 dateWriter.writeDate(
@@ -28,11 +28,11 @@ open class ApiService(
         return vaccinationReportsDeserializer.read(content)
     }
 
-    fun getAllVaccinationReports(): Array<VaccinationReport> {
+    open fun getAllVaccinationReports(): Array<VaccinationReport> {
         return getVaccinationReports(LocalDate.of(2019, 1, 1), LocalDate.now())
     }
 
-    fun getCovidReports(from: LocalDate, to: LocalDate): Array<CovidReport> {
+    open fun getCovidReports(from: LocalDate, to: LocalDate): Array<CovidReport> {
         val content = httpService.getContent(
             "https://koronawirus-api.herokuapp.com/api/covid-vaccinations-tests/from/${dateWriter.writeDate(from)}/to/${
                 dateWriter.writeDate(
@@ -43,7 +43,7 @@ open class ApiService(
         return reportsJsonReader.read(content)
     }
 
-    fun getAllCovidReports(): Array<CovidReport> {
+    open fun getAllCovidReports(): Array<CovidReport> {
         val content = httpService.getContent(
             "https://koronawirus-api.herokuapp.com/api/covid19/from/${
                 dateWriter.writeDate(
@@ -54,7 +54,7 @@ open class ApiService(
         return reportsJsonReader.read(content)
     }
 
-    fun getCovidReport(date: LocalDate): CovidReport? {
+    open fun getCovidReport(date: LocalDate): CovidReport? {
         val r = httpService.get(
             "https://koronawirus-api.herokuapp.com/api/covid-vaccinations-tests/from/${dateWriter.writeDate(date)}/to/${
                 dateWriter.writeDate(date.plusDays(1))
