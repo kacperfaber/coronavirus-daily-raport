@@ -15,7 +15,7 @@ open class HistoryRepository(var factory: SessionFactory) {
         return resultList
     }
 
-    fun getLogs(date: LocalDate): List<HistoryLog> {
+    open fun getLogs(date: LocalDate): List<HistoryLog> {
         return resultListByDate(date)
     }
 
@@ -23,7 +23,7 @@ open class HistoryRepository(var factory: SessionFactory) {
         return resultListByDate(date).getOrNull(0)
     }
 
-    fun put(log: HistoryLog): HistoryLog {
+    open fun put(log: HistoryLog): HistoryLog {
         val sess = factory.openSession()
         sess.beginTransaction()
         val serializable = sess.save(log)
