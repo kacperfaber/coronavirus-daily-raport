@@ -55,5 +55,7 @@ mvn spring-boot:run -Dspring.profiles.active=dev
 #### Configure database using
 `src/main/resources/dev.hiberante.cfg.xml`
 
+> See ./notes/properties.txt to get all configuration properties
+
 ## Author
 Kacper Faber
